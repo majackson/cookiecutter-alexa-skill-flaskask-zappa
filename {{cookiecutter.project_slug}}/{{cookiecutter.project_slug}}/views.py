@@ -15,7 +15,7 @@ def hello_world_statement():
     return statement(_hello_world())
 
 
-@app.route('/hello')
+@app.route('/hello/')
 def hello_world_web():
     return _hello_world()
 

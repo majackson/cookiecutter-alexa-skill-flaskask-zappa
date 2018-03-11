@@ -2,7 +2,9 @@
 
 This is a [Cookiecutter](https://github.com/audreyr/cookiecutter) project for building a Python-based Alexa skill, using [flask](http://flask.pocoo.org/), [flask-ask](https://github.com/johnwheeler/flask-ask), and [zappa](https://github.com/Miserlou/Zappa) for deployment to AWS Lambda.
 
-The project is fully containerised with Docker config files, with entry points through a Makefile for testing, running locally, and rebuilding the environment. It would probably be trivial to adapt the project to not use Docker, if desired.
+The project is fully containerised with Docker config files, with entry points through a Makefile for testing, running locally, and rebuilding the environment. It would probably be trivial to adapt the project to use pipenv or some other virtualenv-based solution instead of Docker, if desired.
+
+The "Hello, world" view in views.py is implemented as both a flask web view and a flask-ask Alexa response. This is to demonstrate how Alexa views might be built and run locally before deploying to Lambda for testing on an Alexa device.
 
 ## Project setup
 You'll need to have Docker and docker-compose installed to use the Makefile build process. On Mac, I recommend using VirtualBox, Homebrew and docker-machine for this.
@@ -10,7 +12,7 @@ You'll need to have Docker and docker-compose installed to use the Makefile buil
 After cutting your project, run `make bootstrap`. You should now be able to run the project locally with `make run`.
 
 ## Tests
-Tests can be run by running `make test`.
+Tests can be run by running `make test`. The cookiecutter project provides just one test, for the "Hello, world" view.
 
 ## Deployment
 Deployment to AWS Lambda is managed through a zappa project, which is already configured in the project. You'll need to add your `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables to `production.env`. This file is excluded from git. You should then be able to do your initial deploy to Lambda by running `make zappa ZAPPA_CMD="deploy alexa"`. Subsequent updates to this same deployment can be performed with `make zappa ZAPPA_CMD="update alexa"`.
