@@ -1,0 +1,10 @@
+*.pyc
+__pycache__
+.cache
+.idea
+
+*.sqlite.db
+
+static/
+
+production.env

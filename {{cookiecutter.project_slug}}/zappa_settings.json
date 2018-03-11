@@ -1,0 +1,11 @@
+{
+    "alexa": {
+        "project_name": "{{cookiecutter.project_name}}",
+        "app_function": "{{cookiecutter.project_slug}}.run.application",
+        "s3_bucket": "{{cookiecutter.project_slug}}-alexa-zappa",
+        "environment_variables": {
+            "PRODUCTION": "TRUE",
+        },
+        "exclude": ["tests"]
+    }
+}
